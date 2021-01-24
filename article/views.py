@@ -12,8 +12,8 @@ def articles(request):
     articles = Article.objects.all()
     return render(request,'articles.html',{'articles':articles})
 def index(request):
-    print(request.user)
-    return render(request,'index.html')
+    articles = Article.objects.all()
+    return render(request,'index.html',{'articles':articles})
 @login_required(login_url="user:login")
 def dashboard(request):
     articles = Article.objects.filter(author = request.user)
