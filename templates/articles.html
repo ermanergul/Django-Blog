@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+{% if articles %}
+<br><br>
+
+<div class="row">
+    <div class="col-md-8">
+        <div>
+            <form>
+                {% csrf_token %}
+                <input type="text" name="keyword" class="input-sm" maxlength="50" placeholder="MAKALE ARA...">
+                <button type="submit" class="btn btn-dark btn-sm">Ara..</button>
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    {% for article in articles %}
+    
+    <div class="col-md-4">
+    <div class="card" style="width: 100%;margin-top: 3rem;">
+        <img class="card-img-top" src="{{article.article_image.url}}" alt="Card image cap" style="height: 10rem;">
+        <div class="card-body">
+            <a href="/articles/article/{{article.id}}" style="color: darkgray;"><h5 class="card-title text-center">{{article.title}}</h5></a>
+            <p class="card-text">{{article.content|safe|truncatewords:10}}</p>
+            <a href="/articles/article/{{article.id}}" class="btn btn-secondary" style="float: right;">Gözat</a>
+            
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- {% for article in articles %}
+<div class="row">
+    <div class="col-md-10 offset-md-3">
+        
+        <div class="col-lg-8">
+           
+            <a href="/articles/article/{{article.id}}" style="color:darkgray">
+                <h3 class="mt-4">{{article.title}}</h3>
+            </a>
+
+            <p class="lead">
+                by
+                <a href="#">{{article.author.username}}</a>
+            </p>
+            <hr>
+ 
+            <p>{{article.created_date}}</p>
+            <hr>
+   
+            {% if article.article_image %}
+            <img class="img-fluid rounded" src="{{article.article_image.url}}" alt="">
+            {% endif %}
+
+            <p class="lead">{{article.content|safe|truncatewords:50}}</p>
+            <hr>
+        </div>
+    </div>
+</div>
+{% endfor %} -->
+{% else %}
+<br><br><br>
+<div class="row">
+    <div class="col-md-8 offset-md-3">
+        <div class="col-lg-10">
+            <div class="alert alert-danger" style="max-width: 70%;">
+                Makale Bulunmamaktadır!
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endif %}
+
+
+
+{% endblock body %}

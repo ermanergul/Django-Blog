@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<br><br>
+<div class="row">
+    <div class="col-lg-8">
+        <h3 class="text-center">THE WORLD İS YOURS</h3>
+        <hr>
+        <br><br>
+        {% if request.user.is_authenticated %}
+        <h6>Giriş Yapılmış, {{ request.user.username }}</h6>
+        {% else %}
+        <h6>Giriş Yapılmamış</h6>
+        {% endif %}
+        <!-- Title -->
+        <div class="card" style="width: 100%; height: 20%;">
+            <img class="card-img-top" src="/media/sivas.jpg" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">Django takes security seriously and helps developers avoid many common security mistakes, such as SQL
+                    injection, cross-site scripting, cross-site request forgery and clickjacking. Its user authentication
+                    system provides a secure way to manage user accounts and passwords.</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <h3 class="text-center">AYRICA BKZ.</h3>
+        <br><br>
+        <hr>
+        <div class="card my-4">
+            <h5 class="card-header text-center">Başlangıç Makale</h5>
+            <div class="card-body">
+                With Django, you can take Web applications from concept to launch in a matter of hours. Django takes
+                care of much of the hassle of Web development, so you can focus on writing your app without needing to
+                reinvent the wheel. It’s free and open source.
+            </div>
+        </div>
+        <div class="card my-4">
+            <h5 class="card-header text-center">Hava Durumu Api Kullanım</h5>
+            <div class="card-body">
+                Django takes security seriously and helps developers avoid many common security mistakes, such as SQL
+                injection, cross-site scripting, cross-site request forgery and clickjacking. Its user authentication
+                system provides a secure way to manage user accounts and passwords.
+            </div>
+        </div>
+        <div class="card my-4">
+            <h5 class="card-header text-center">Tarih Apisi</h5>
+            <div class="card-body">
+                Django includes dozens of extras you can use to handle common Web development tasks. Django takes care
+                of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of
+                the box.
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<br>
+
+
+{% endblock body %}
